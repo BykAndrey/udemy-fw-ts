@@ -15,8 +15,11 @@ interface IEvents {
     on: (eventName: string, callback: Callback) => void;
     trigger: (e:string) => void;
 }
+export interface HasId {
+	id?: number
+}
 
-export class Model<T extends {id?: number}> {
+export class Model<T extends HasId> {
     constructor(
         private attributes: IModelAttritutes<T>,
         private sync: ISync<T>,

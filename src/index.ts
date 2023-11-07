@@ -1,8 +1,7 @@
 import { User } from "./models/User";
+import { UserEdit } from "./views/UserEdit";
 
-const collection = User.buildCollection();
 
-collection.fetch();
-collection.on('change', () => {
-    console.log(collection.models)
-})
+const user = User.buildUser({ name: 'Max', age: 10 });
+const form = new UserEdit(document.getElementById('root')!, user);
+form.render();
